@@ -4,7 +4,7 @@
     CCTelegramUDF - Telegram Bot API for AutoIt
 
     Author .......: Markus Debus, CITRO Computer
-    Version ......: 1.0.0
+    Version ......: 1.0.1
     AutoIt .......: 3.3.14.0 or newer (3.3.16.1 recommended)
     License ......: GPL-3.0-or-later with an additional attribution term (GPLv3 section 7(b)), see LICENSE.txt and NOTICE.txt
     Telegram API .: https://core.telegram.org/bots/api
@@ -40,7 +40,7 @@
 
 #Region "Constants and globals"
 
-Global Const $CCTELEGRAM_VERSION = "1.0.0"
+Global Const $CCTELEGRAM_VERSION = "1.0.1"
 
 ; @error codes
 Global Const $CCTELEGRAM_ERR_NOINIT = 1      ; _CCTelegram_Init() was not called (no token)
@@ -256,6 +256,8 @@ Func _CCTelegram_Obj($k1 = Default, $v1 = Default, $k2 = Default, $v2 = Default,
         $k5 = Default, $v5 = Default, $k6 = Default, $v6 = Default, $k7 = Default, $v7 = Default, $k8 = Default, $v8 = Default, _
         $k9 = Default, $v9 = Default, $k10 = Default, $v10 = Default, $k11 = Default, $v11 = Default, $k12 = Default, $v12 = Default, _
         $k13 = Default, $v13 = Default, $k14 = Default, $v14 = Default, $k15 = Default, $v15 = Default, $k16 = Default, $v16 = Default)
+    #forceref $k1, $v1, $k2, $v2, $k3, $v3, $k4, $v4, $k5, $v5, $k6, $v6, $k7, $v7, $k8, $v8
+    #forceref $k9, $v9, $k10, $v10, $k11, $v11, $k12, $v12, $k13, $v13, $k14, $v14, $k15, $v15, $k16, $v16
     Local $oObj = ObjCreate("Scripting.Dictionary")
     Local $vKey, $vValue
     For $i = 1 To Int((@NumParams + 1) / 2)
@@ -276,6 +278,8 @@ Func _CCTelegram_Arr($v1 = Default, $v2 = Default, $v3 = Default, $v4 = Default,
         $v9 = Default, $v10 = Default, $v11 = Default, $v12 = Default, $v13 = Default, $v14 = Default, $v15 = Default, $v16 = Default, _
         $v17 = Default, $v18 = Default, $v19 = Default, $v20 = Default, $v21 = Default, $v22 = Default, $v23 = Default, $v24 = Default, _
         $v25 = Default, $v26 = Default, $v27 = Default, $v28 = Default, $v29 = Default, $v30 = Default, $v31 = Default, $v32 = Default)
+    #forceref $v1, $v2, $v3, $v4, $v5, $v6, $v7, $v8, $v9, $v10, $v11, $v12, $v13, $v14, $v15, $v16
+    #forceref $v17, $v18, $v19, $v20, $v21, $v22, $v23, $v24, $v25, $v26, $v27, $v28, $v29, $v30, $v31, $v32
     Local $aRes[32], $iN = 0, $vValue
     For $i = 1 To @NumParams
         $vValue = Eval("v" & $i)
@@ -1209,8 +1213,9 @@ EndFunc   ;==>__CCTelegram_Http
 
 Func __CCTelegram_ComError($oError)
     $__g_iCCTelegram_ComErrNumber = $oError.number
-    $__g_sCCTelegram_ComErrDesc = StringStripWS($oError.windescription, 3)
-    If $__g_sCCTelegram_ComErrDesc = "" Then $__g_sCCTelegram_ComErrDesc = StringStripWS($oError.description, 3)
+    ; for WinHttp errors .windescription only says "exception occurred" (0x80020009); the real cause is in .description
+    $__g_sCCTelegram_ComErrDesc = StringStripWS($oError.description, 3)
+    If $__g_sCCTelegram_ComErrDesc = "" Then $__g_sCCTelegram_ComErrDesc = StringStripWS($oError.windescription, 3)
 EndFunc   ;==>__CCTelegram_ComError
 
 #EndRegion "Request engine"

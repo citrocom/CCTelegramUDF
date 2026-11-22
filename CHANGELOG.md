@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.1 (2026-11-22)
+
+- No more Au3Check warnings "declared, but not used" for `_CCTelegram_Obj` / `_CCTelegram_Arr` (parameters are read
+  with `Eval`, now marked with `#forceref`).
+- Network errors: `_CCTelegram_LastErrorDescription()` shows the actual WinHTTP cause (e.g. "connection could not be
+  established") instead of the generic COM text "exception occurred" (0x80020009).
+
 ## 1.0.0 (2026-11-22)
 
 First release.
