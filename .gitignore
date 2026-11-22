@@ -1,0 +1,9 @@
+# local secrets and runtime state
+tests/config.ini
+examples/bot.ini
+examples/downloads/
+# AutoIt / SciTE artefacts
+*.exe
+*.bak
+BackUp/
+*.au3.tbl

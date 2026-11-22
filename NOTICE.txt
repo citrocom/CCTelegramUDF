@@ -1,0 +1,27 @@
+CCTelegramUDF - Telegram Bot API for AutoIt
+Copyright (C) 2026 Markus Debus, CITRO Computer
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public
+License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later
+version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the file LICENSE.txt for details.
+
+Additional term according to section 7(b) of the GNU GPL version 3
+-------------------------------------------------------------------
+Anyone who conveys this program or a work based on it must preserve the following author attribution:
+
+    "CCTelegramUDF by Markus Debus, CITRO Computer"
+
+This attribution must be kept in the header comments of the source files and in this NOTICE.txt file. Works that contain or
+are based on this program must, in addition, show the attribution in their documentation (for example a README) or,
+for programs with a user interface, in an "About" box or a comparable place.
+
+Credits
+-------
+- The idea of an AutoIt Telegram UDF was inspired by xLinkOut/telegram-udf-autoit (MIT License,
+  https://github.com/xLinkOut/telegram-udf-autoit). CCTelegramUDF is an independent implementation; compat\Telegram.au3
+  re-implements the public interface of that UDF so that existing scripts can switch over.
+- CCTelegramUDF_Methods.au3 is generated from the machine-readable Bot API specification of
+  PaulSonOfLars/telegram-bot-api-spec (MIT License, see tools\SPEC-LICENSE-MIT.txt), which is derived from the official
+  Telegram Bot API documentation (https://core.telegram.org/bots/api).
+- Telegram is a trademark of its respective owner. This project is not affiliated with Telegram.
